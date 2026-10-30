@@ -1,26 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
 <defs>
-  <radialGradient id="bg" cx="50%" cy="48%" r="58%">
-    <stop offset="0" stop-color="#ffef8a"/>
-    <stop offset=".25" stop-color="#ffb000"/>
-    <stop offset=".52" stop-color="#ff6900"/>
-    <stop offset=".76" stop-color="#7a1800"/>
-    <stop offset="1" stop-color="#050505"/>
+  <radialGradient id="sunCore" cx="38%" cy="34%" r="72%">
+    <stop offset="0" stop-color="#fff8bf"/>
+    <stop offset=".15" stop-color="#ffe257"/>
+    <stop offset=".38" stop-color="#ffad12"/>
+    <stop offset=".68" stop-color="#ff6500"/>
+    <stop offset=".92" stop-color="#c72f00"/>
+    <stop offset="1" stop-color="#7f1300"/>
   </radialGradient>
-  <radialGradient id="sun" cx="42%" cy="38%" r="68%">
-    <stop offset="0" stop-color="#fff7ae"/>
-    <stop offset=".2" stop-color="#ffd52d"/>
-    <stop offset=".55" stop-color="#ff7b00"/>
-    <stop offset=".9" stop-color="#d93600"/>
-    <stop offset="1" stop-color="#8b1600"/>
+  <radialGradient id="corona" cx="50%" cy="50%" r="50%">
+    <stop offset=".56" stop-color="#ffb20d" stop-opacity="0"/>
+    <stop offset=".72" stop-color="#ffae00" stop-opacity=".32"/>
+    <stop offset=".88" stop-color="#ff7b00" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#ff7b00" stop-opacity="0"/>
   </radialGradient>
-  <filter id="glow"><feGaussianBlur stdDeviation="22"/></filter>
+  <filter id="surface">
+    <feTurbulence type="fractalNoise" baseFrequency=".035 .045" numOctaves="4" seed="17" result="noise">
+      <animate attributeName="baseFrequency" dur="18s" values=".035 .045;.043 .037;.035 .045" repeatCount="indefinite"/>
+    </feTurbulence>
+    <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+    <feDisplacementMap in="SourceGraphic" in2="mono" scale="22" xChannelSelector="R" yChannelSelector="B"/>
+  </filter>
+  <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="22" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="wideGlow" x="-100%" y="-100%" width="300%" height="300%">
+    <feGaussianBlur stdDeviation="42"/>
+  </filter>
+  <clipPath id="sunClip"><circle cx="1165" cy="455" r="295"/></clipPath>
 </defs>
-<rect width="1200" height="1200" fill="#020202"/>
-<circle cx="600" cy="600" r="455" fill="#ff9d00" opacity=".42" filter="url(#glow)"/>
-<circle cx="600" cy="600" r="410" fill="url(#sun)"/>
-<g fill="none" stroke="#ffe36a" opacity=".45">
-  <path d="M260 705c95-85 110-162 190-140 64 18 78 100 140 73 77-34 45-111 121-140 81-31 131 29 184 7" stroke-width="16"/>
-  <path d="M330 455c87 54 146 0 212 29 84 38 70 111 155 123 85 12 114-72 194-38" stroke-width="11"/>
+
+<rect width="1600" height="900" fill="#020202"/>
+
+<g opacity=".78">
+  <circle cx="1165" cy="455" r="420" fill="url(#corona)">
+    <animate attributeName="r" values="405;425;412;405" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".64;.86;.7;.64" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1165" cy="455" r="325" fill="#ff8a00" opacity=".26" filter="url(#wideGlow)">
+    <animate attributeName="opacity" values=".18;.34;.2;.18" dur="6.5s" repeatCount="indefinite"/>
+  </circle>
+</g>
+
+<g filter="url(#surface)">
+  <circle cx="1165" cy="455" r="295" fill="url(#sunCore)"/>
+</g>
+
+<g clip-path="url(#sunClip)" opacity=".72">
+  <g fill="none" stroke-linecap="round">
+    <path d="M935 525c95-112 156-70 225-118 74-51 118-12 206-88" stroke="#fff083" stroke-width="15" opacity=".55">
+      <animate attributeName="d" dur="12s" repeatCount="indefinite"
+        values="M935 525c95-112 156-70 225-118 74-51 118-12 206-88;
+                M930 512c102-95 163-66 228-105 77-46 126-16 211-75;
+                M935 525c95-112 156-70 225-118 74-51 118-12 206-88"/>
+    </path>
+    <path d="M1010 330c74 58 135 24 191 69 72 58 82 121 176 113" stroke="#ffd255" stroke-width="10" opacity=".52"/>
+    <path d="M1015 645c70-42 132-41 197 0 54 34 113 36 165 6" stroke="#ffbf35" stroke-width="12" opacity=".55"/>
+  </g>
+</g>
+
+<g fill="none" stroke="#ffae1c" stroke-linecap="round" opacity=".42" filter="url(#softGlow)">
+  <path d="M987 169c-14-71 20-119 74-132 62-15 96 31 130 68" stroke-width="9">
+    <animate attributeName="opacity" values=".2;.58;.24;.2" dur="7s" repeatCount="indefinite"/>
+  </path>
+  <path d="M1370 609c72-2 121 31 128 78 8 55-38 82-83 102" stroke-width="8">
+    <animate attributeName="opacity" values=".18;.5;.25;.18" dur="9s" repeatCount="indefinite"/>
+  </path>
 </g>
 </svg>
