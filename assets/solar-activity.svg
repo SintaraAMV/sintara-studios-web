@@ -23,9 +23,9 @@
   </defs>
   <style>
     .prominence { fill:none; stroke-linecap:round; stroke-linejoin:round; }
-    .arc-glow { stroke:url(#arc-heat); filter:url(#arc-blur); opacity:.27; }
-    .arc-body { stroke:url(#arc-heat); opacity:.72; }
-    .arc-filament { stroke:url(#arc-core); stroke-dasharray:28 44 9 24; opacity:.78; }
+    .arc-glow { stroke:url(#arc-heat); filter:url(#arc-blur); opacity:.20; }
+    .arc-body { stroke:url(#arc-heat); opacity:.58; }
+    .arc-filament { stroke:url(#arc-core); stroke-dasharray:28 44 9 24; opacity:.60; }
     .prominence-1 {animation:glow-a 17.6s -4.2s ease-in-out infinite;}
     .prominence-2 {animation:glow-b 21.1s -10.4s ease-in-out infinite;}
     .prominence-3 {animation:glow-c 25.3s -7.1s ease-in-out infinite;}
@@ -43,11 +43,11 @@
     .filament-7 {animation:flow 27.4s -8.5s linear infinite;}
     .filament-8 {animation:flow 20.9s -13.2s linear infinite;}
     @keyframes flow { to {stroke-dashoffset:-210;} }
-    @keyframes glow-a {0%,100%{opacity:.44;}39%{opacity:.83;}71%{opacity:.57;}}
-    @keyframes glow-b {0%,100%{opacity:.68;}31%{opacity:.49;}76%{opacity:.86;}}
-    @keyframes glow-c {0%,100%{opacity:.56;}44%{opacity:.79;}67%{opacity:.38;}}
-    @keyframes glow-minor-a {0%,100%{opacity:.23;}32%{opacity:.49;}70%{opacity:.31;}}
-    @keyframes glow-minor-b {0%,100%{opacity:.36;}39%{opacity:.21;}77%{opacity:.52;}}
+    @keyframes glow-a {0%,100%{opacity:.45;}39%{opacity:.66;}71%{opacity:.52;}}
+    @keyframes glow-b {0%,100%{opacity:.55;}31%{opacity:.43;}76%{opacity:.69;}}
+    @keyframes glow-c {0%,100%{opacity:.47;}44%{opacity:.64;}67%{opacity:.38;}}
+    @keyframes glow-minor-a {0%,100%{opacity:.20;}32%{opacity:.37;}70%{opacity:.26;}}
+    @keyframes glow-minor-b {0%,100%{opacity:.29;}39%{opacity:.19;}77%{opacity:.40;}}
     @media(prefers-reduced-motion:reduce) {
       .prominence,.arc-filament {animation:none!important;}
     }

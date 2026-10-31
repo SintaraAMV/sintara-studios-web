@@ -82,3 +82,16 @@ scientifically accurate plasma or electromagnetic field simulation.
   concentric electromagnetic-wave rings, or synchronized flame bursts.
 - The existing observation imagery and its attribution are retained.
 - This is an artistic atmospheric overlay, not a physically accurate solar model.
+
+
+## Solar v1.5 — balanced warmth and restrained activity
+
+- Primary hues: natural gold and amber; orange is a minor accent, not the dominant surface color.
+- Preserve observational surface contrast; avoid uniformly saturating the disc.
+- Warm-white highlights belong primarily to existing active regions.
+- The solar disc remains static. No rotation.
+- Corona, local emission and SVG prominence loops animate gently at different cadences.
+- Emission opacity changes have small amplitudes; no aggressive strobes, expanding rings, or synchronized flashes.
+- The same restrained treatment is applied to the Studio hero and home Studio portal.
+- Animation is a visual interpretation of plasma/coronal activity, not a scientific time-lapse.
+- Assess the real rendered result on desktop and mobile before treating the design as final.
