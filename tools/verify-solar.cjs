@@ -31,6 +31,7 @@ const server = createServer(async (req,res) => {
         await page.evaluate(()=>document.fonts.ready);
         const target=page.locator(file==='index.html'?'.portal-sun .portal-image':'.solar-stage');
         assert.equal(await page.locator('.solar-emission').count(),3);
+        assert.deepEqual(await page.locator('.solar-emission').evaluateAll(es=>es.map(e=>e.getAnimations()[0].effect.getTiming().duration)),[12000,12000,12000]);
         const shot=async()=>{
           const b=await target.boundingBox();
           const x=Math.max(0,b.x),y=Math.max(0,b.y);
@@ -43,9 +44,11 @@ const server = createServer(async (req,res) => {
         await freeze(6000);
         await shot(); // Warm the compositor and stabilize scrolling.
         await freeze(0);
+        const initialOpacity=await page.locator('.solar-emission').evaluateAll(es=>es.map(e=>getComputedStyle(e).opacity));
         const initial=await shot();
         const before=await target.boundingBox();
         await freeze(12000);
+        assert.deepEqual(await page.locator('.solar-emission').evaluateAll(es=>es.map(e=>getComputedStyle(e).opacity)),initialOpacity);
         const end=await shot();
         await fs.writeFile(path.join(output,`${file}-${viewport.width}-start.png`),initial);
         await fs.writeFile(path.join(output,`${file}-${viewport.width}-end.png`),end);

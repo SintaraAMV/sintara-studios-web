@@ -40,4 +40,3 @@ public static class SolarAssets {
 }
 '@
 [SolarAssets]::Build((Get-Location).Path)
-
