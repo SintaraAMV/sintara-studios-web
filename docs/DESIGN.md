@@ -53,3 +53,19 @@ properly credited asset if stability and performance tests justify it.
 
 The visual overlays are artistic interpretations, NOT a numerical or
 scientifically accurate plasma or electromagnetic field simulation.
+
+
+## Solar refinement v1.3
+
+- Surface palette: vivid orange / amber, with irregular high-temperature
+  cream-white highlights; avoid flat saturated orange.
+- Existing NASA/SDO observational source remains the static texture.
+- Solar disc does not rotate.
+- Six asymmetrical coronal prominences are provided by a separate
+  `assets/solar-activity.svg` overlay. Each follows a unique arc and
+  has its own flow/glow cadence, avoiding synchronized repetition.
+- The same prominence overlay is displayed on the Studio hero and
+  the Sun portal panel. Render independently of the disc.
+- All optional motion must respect `prefers-reduced-motion`.
+- Prominence paths and colors are illustrative and should not be
+  described as a physically accurate simulation of solar plasma.

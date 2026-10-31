@@ -1,42 +1,91 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" aria-hidden="true">
-<defs>
- <linearGradient id="filament" x1="0" y1="0" x2="1" y2="1">
-  <stop offset="0" stop-color="#ec6d13" stop-opacity="0"/>
-  <stop offset=".3" stop-color="#ff8d20" stop-opacity=".42"/>
-  <stop offset=".55" stop-color="#fff0aa" stop-opacity=".94"/>
-  <stop offset=".78" stop-color="#ff911f" stop-opacity=".4"/>
-  <stop offset="1" stop-color="#ca420f" stop-opacity="0"/>
- </linearGradient>
- <filter id="feather" x="-150%" y="-150%" width="400%" height="400%">
-  <feGaussianBlur stdDeviation="5"/>
- </filter>
- <filter id="soft" x="-150%" y="-150%" width="400%" height="400%">
-  <feGaussianBlur stdDeviation="2"/>
- </filter>
-</defs>
-<!-- Nonperiodic-looking, localized activity. The central solar disc does not rotate. -->
-<g fill="none" stroke-linecap="round">
- <g stroke="url(#filament)" filter="url(#feather)" opacity=".28" stroke-width="13">
-  <path d="M813 250 C910 102 971 235 914 348 C943 258 874 195 813 250"/>
-  <path d="M172 335 C68 258 24 387 104 461 C43 389 99 301 172 335"/>
-  <path d="M552 853 C607 750 748 789 767 858 C715 788 625 793 552 853"/>
- </g>
- <g stroke="url(#filament)" opacity=".45" stroke-width="3.5" filter="url(#soft)">
-  <path d="M808 259 C895 129 958 235 907 338">
-   <animate attributeName="opacity" values=".34;.72;.49;.34" dur="14.2s" repeatCount="indefinite"/>
-   <animate attributeName="stroke-dasharray" values="8 20;20 12;8 20" dur="14.2s" repeatCount="indefinite"/>
-  </path>
-  <path d="M164 330 C77 268 31 390 114 458">
-   <animate attributeName="opacity" values=".22;.44;.32;.22" dur="18.1s" repeatCount="indefinite"/>
-   <animate attributeName="stroke-dasharray" values="10 24;19 15;10 24" dur="18.1s" repeatCount="indefinite"/>
-  </path>
-  <path d="M556 849 C625 773 729 794 764 858">
-   <animate attributeName="opacity" values=".28;.53;.35;.28" dur="11.7s" repeatCount="indefinite"/>
-   <animate attributeName="stroke-dasharray" values="9 23;22 12;9 23" dur="11.7s" repeatCount="indefinite"/>
-  </path>
- </g>
-</g>
-<style>
-@media (prefers-reduced-motion:reduce){animate{display:none}}
-</style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <title>Localized solar prominences</title>
+  <desc>Six irregular luminous plasma arcs with independent, gentle movement along their own paths. The solar disc itself remains static.</desc>
+  <defs>
+    <linearGradient id="arc-heat" x1="0%" y1="100%" x2="90%" y2="0%">
+      <stop offset="0" stop-color="#b53b06" stop-opacity=".15"/>
+      <stop offset=".17" stop-color="#ed6e0b" stop-opacity=".62"/>
+      <stop offset=".44" stop-color="#ffb22b" stop-opacity=".94"/>
+      <stop offset=".58" stop-color="#ffeb99" stop-opacity=".95"/>
+      <stop offset=".79" stop-color="#ff8d19" stop-opacity=".71"/>
+      <stop offset="1" stop-color="#cc4c06" stop-opacity=".22"/>
+    </linearGradient>
+    <linearGradient id="arc-core" x1="0%" y1="10%" x2="100%" y2="90%">
+      <stop offset="0" stop-color="#ff8b1b" stop-opacity=".15"/>
+      <stop offset=".28" stop-color="#ffd566" stop-opacity=".81"/>
+      <stop offset=".55" stop-color="#fff3c7" stop-opacity=".95"/>
+      <stop offset=".76" stop-color="#ffb940" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#ff6c14" stop-opacity=".09"/>
+    </linearGradient>
+    <filter id="arc-blur" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="7.5"/>
+    </filter>
+  </defs>
+  <style>
+    .prominence { fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .arc-glow { stroke:url(#arc-heat); filter:url(#arc-blur); opacity:.27; }
+    .arc-body { stroke:url(#arc-heat); opacity:.72; }
+    .arc-filament { stroke:url(#arc-core); stroke-dasharray:28 44 9 24; opacity:.78; }
+    .prominence-1 {animation:glow-a 17.6s -4.2s ease-in-out infinite;}
+    .prominence-2 {animation:glow-b 21.1s -10.4s ease-in-out infinite;}
+    .prominence-3 {animation:glow-c 25.3s -7.1s ease-in-out infinite;}
+    .prominence-4 {animation:glow-b 19.4s -12.1s ease-in-out infinite;}
+    .prominence-5 {animation:glow-a 14.8s -3.7s ease-in-out infinite;}
+    .prominence-6 {animation:glow-c 23.8s -15.1s ease-in-out infinite;}
+    .filament-1 {animation:flow 17.6s -4.2s linear infinite;}
+    .filament-2 {animation:flow 21.1s -10.4s linear infinite;}
+    .filament-3 {animation:flow 25.3s -7.1s linear infinite;}
+    .filament-4 {animation:flow 19.4s -12.1s linear infinite;}
+    .filament-5 {animation:flow 14.8s -3.7s linear infinite;}
+    .filament-6 {animation:flow 23.8s -15.1s linear infinite;}
+    @keyframes flow { to {stroke-dashoffset:-210;} }
+    @keyframes glow-a {0%,100%{opacity:.44;}39%{opacity:.83;}71%{opacity:.57;}}
+    @keyframes glow-b {0%,100%{opacity:.68;}31%{opacity:.49;}76%{opacity:.86;}}
+    @keyframes glow-c {0%,100%{opacity:.56;}44%{opacity:.79;}67%{opacity:.38;}}
+    @media(prefers-reduced-motion:reduce) {
+      .prominence,.arc-filament {animation:none!important;}
+    }
+  </style>
+  
+  <!-- Independently timed prominence: east-upper -->
+  <g class="prominence prominence-1">
+    <path class="arc-glow" d="M790 201 C845 118 931 132 955 202 C974 257 930 321 892 381" stroke-width="19.52"/>
+    <path class="arc-body" d="M790 201 C845 118 931 132 955 202 C974 257 930 321 892 381" stroke-width="3.2"/>
+    <path class="arc-filament filament-1" d="M799 211 C855 144 920 143 941 206 C958 267 928 318 901 368" stroke-width="1.89"/>
+  </g>
+
+  <!-- Independently timed prominence: west-mid -->
+  <g class="prominence prominence-2">
+    <path class="arc-glow" d="M116 356 C35 311 -14 362 17 447 C31 485 71 500 106 502" stroke-width="15.86"/>
+    <path class="arc-body" d="M116 356 C35 311 -14 362 17 447 C31 485 71 500 106 502" stroke-width="2.6"/>
+    <path class="arc-filament filament-2" d="M119 367 C39 335 3 378 34 448 C51 484 83 491 109 493" stroke-width="1.53"/>
+  </g>
+
+  <!-- Independently timed prominence: north -->
+  <g class="prominence prominence-3">
+    <path class="arc-glow" d="M333 122 C305 65 341 22 392 27 C435 32 447 70 475 94" stroke-width="13.42"/>
+    <path class="arc-body" d="M333 122 C305 65 341 22 392 27 C435 32 447 70 475 94" stroke-width="2.2"/>
+    <path class="arc-filament filament-3" d="M342 128 C318 74 360 44 396 47 C428 51 442 80 463 100" stroke-width="1.30"/>
+  </g>
+
+  <!-- Independently timed prominence: west-lower -->
+  <g class="prominence prominence-4">
+    <path class="arc-glow" d="M231 805 C201 890 250 961 334 943 C380 933 403 908 430 899" stroke-width="16.47"/>
+    <path class="arc-body" d="M231 805 C201 890 250 961 334 943 C380 933 403 908 430 899" stroke-width="2.7"/>
+    <path class="arc-filament filament-4" d="M242 816 C217 883 270 933 333 925 C370 921 398 902 426 891" stroke-width="1.59"/>
+  </g>
+
+  <!-- Independently timed prominence: east-lower -->
+  <g class="prominence prominence-5">
+    <path class="arc-glow" d="M772 810 C865 883 983 828 958 748 C949 717 919 693 883 683" stroke-width="20.74"/>
+    <path class="arc-body" d="M772 810 C865 883 983 828 958 748 C949 717 919 693 883 683" stroke-width="3.4"/>
+    <path class="arc-filament filament-5" d="M789 815 C865 860 954 812 940 749 C932 718 905 700 879 691" stroke-width="2.01"/>
+  </g>
+
+  <!-- Independently timed prominence: east-mid -->
+  <g class="prominence prominence-6">
+    <path class="arc-glow" d="M915 438 C1010 415 1046 494 1014 546 C994 574 938 584 897 579" stroke-width="12.81"/>
+    <path class="arc-body" d="M915 438 C1010 415 1046 494 1014 546 C994 574 938 584 897 579" stroke-width="2.1"/>
+    <path class="arc-filament filament-6" d="M923 442 C997 430 1027 492 996 539 C974 566 931 569 898 569" stroke-width="1.24"/>
+  </g>
 </svg>
