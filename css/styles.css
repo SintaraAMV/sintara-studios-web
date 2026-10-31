@@ -366,3 +366,171 @@ a{color:inherit}
     animation:none!important;
   }
 }
+
+
+/* Solar system v1.2
+   The disc is NASA/GSFC/SDO observational imagery, not a CSS-drawn sun.
+   Only plasma/corona/halo layers animate. No rotation, no concentric EM waves.
+   The SVG fallback stays available if the remote base fails. */
+
+.hero-sun{
+  background:#020202;
+  isolation:isolate;
+}
+
+.hero-sun .solar-space{
+  background-image:none;
+  background:radial-gradient(ellipse at 82% 48%,rgba(62,22,3,.26),transparent 46%),#020202;
+  animation:none;
+}
+
+.solar-stage{
+  position:absolute;
+  z-index:-2;
+  width:min(58vw,790px);
+  aspect-ratio:1/1;
+  right:clamp(-72px,-2vw,0px);
+  top:50%;
+  transform:translateY(-50%);
+  overflow:visible;
+  pointer-events:none;
+  isolation:isolate;
+}
+
+.solar-corona,
+.solar-disc,
+.solar-plasma,
+.solar-halo{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+}
+
+.solar-corona{
+  inset:-6%;
+  background:
+    radial-gradient(circle at 50% 50%,
+      transparent 36%,
+      rgba(159,53,2,.08) 41%,
+      rgba(255,133,15,.16) 47%,
+      rgba(243,101,2,.07) 53%,
+      transparent 62%);
+  filter:blur(28px);
+  animation:solar-corona-breath 23s ease-in-out infinite;
+}
+
+.solar-disc{
+  border-radius:0;
+  background-image:
+    url("https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26681/PIA26681.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1536&w=1536"),
+    url("../assets/sun.svg");
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+  filter:contrast(1.14) saturate(1.25) sepia(.1);
+  -webkit-mask-image:radial-gradient(circle, #000 0 42%, rgba(0,0,0,.96) 49%, rgba(0,0,0,.2) 56%, transparent 62%);
+  mask-image:radial-gradient(circle, #000 0 42%, rgba(0,0,0,.96) 49%, rgba(0,0,0,.2) 56%, transparent 62%);
+  /* Intentionally static: the Sun itself never spins or shifts. */
+}
+
+.solar-plasma{
+  background-image:url("../assets/solar-activity.svg");
+  background-position:center;
+  background-size:contain;
+  background-repeat:no-repeat;
+  opacity:.53;
+  mix-blend-mode:screen;
+  animation:solar-plasma-fluctuation 19s ease-in-out infinite;
+}
+
+.solar-halo{
+  inset:2%;
+  background:
+    radial-gradient(ellipse 17% 10% at 88% 35%,rgba(255,214,105,.38),transparent 90%),
+    radial-gradient(ellipse 14% 9% at 13% 41%,rgba(255,149,22,.34),transparent 90%),
+    radial-gradient(ellipse 12% 8% at 61% 84%,rgba(240,92,7,.26),transparent 90%);
+  filter:blur(22px);
+  mix-blend-mode:screen;
+  animation:solar-local-emission 13.4s ease-in-out infinite;
+}
+
+.hero-sun .hero-overlay{
+  z-index:-1;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.71) 31%,rgba(0,0,0,.18) 63%,rgba(0,0,0,.03) 100%),
+    linear-gradient(to top,rgba(0,0,0,.42),transparent 45%);
+}
+
+.hero-sun .hero-content{
+  position:relative;
+  z-index:1;
+}
+
+.hero-sun .hero-content h1{max-width:675px}
+
+.solar-credit{
+  margin:22px 0 0;
+  font-size:.69rem;
+  color:rgba(255,255,255,.46);
+  line-height:1.4;
+}
+
+.solar-credit a{text-underline-offset:3px}
+.solar-credit a:hover{color:rgba(255,255,255,.83)}
+
+@keyframes solar-corona-breath{
+  0%,100%{opacity:.60;filter:blur(28px)}
+  46%{opacity:.84;filter:blur(34px)}
+  71%{opacity:.67;filter:blur(25px)}
+}
+
+@keyframes solar-plasma-fluctuation{
+  0%,100%{opacity:.38;filter:brightness(.93)}
+  37%{opacity:.59;filter:brightness(1.07)}
+  72%{opacity:.48;filter:brightness(.98)}
+}
+
+@keyframes solar-local-emission{
+  0%,100%{opacity:.53}
+  28%{opacity:.77}
+  66%{opacity:.47}
+}
+
+@media(max-width:820px){
+  .solar-stage{
+    width:min(88vw,625px);
+    right:-24vw;
+    top:44%;
+    opacity:.86;
+  }
+
+  .hero-sun .hero-overlay{
+    background:
+      linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.67) 54%,rgba(0,0,0,.18)),
+      linear-gradient(to top,rgba(0,0,0,.57),transparent 60%);
+  }
+
+  .solar-credit{max-width:340px;font-size:.64rem}
+}
+
+@media(max-width:560px){
+  .solar-stage{
+    width:112vw;
+    right:-55vw;
+    top:41%;
+    opacity:.75;
+  }
+  .hero-sun .hero-content{padding-bottom:38px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .solar-corona,.solar-plasma,.solar-halo{animation:none!important}
+}
+
+
+/* Portal and Studio are visually consistent without making the portal heavier. */
+.portal-sun .portal-image{
+  background-image:url("https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26681/PIA26681.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1536&w=1536"),url("../assets/sun.svg");
+  background-size:cover;
+  background-position:60% center;
+}

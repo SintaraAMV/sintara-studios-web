@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" aria-hidden="true">
+<defs>
+ <linearGradient id="filament" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#ec6d13" stop-opacity="0"/>
+  <stop offset=".3" stop-color="#ff8d20" stop-opacity=".42"/>
+  <stop offset=".55" stop-color="#fff0aa" stop-opacity=".94"/>
+  <stop offset=".78" stop-color="#ff911f" stop-opacity=".4"/>
+  <stop offset="1" stop-color="#ca420f" stop-opacity="0"/>
+ </linearGradient>
+ <filter id="feather" x="-150%" y="-150%" width="400%" height="400%">
+  <feGaussianBlur stdDeviation="5"/>
+ </filter>
+ <filter id="soft" x="-150%" y="-150%" width="400%" height="400%">
+  <feGaussianBlur stdDeviation="2"/>
+ </filter>
+</defs>
+<!-- Nonperiodic-looking, localized activity. The central solar disc does not rotate. -->
+<g fill="none" stroke-linecap="round">
+ <g stroke="url(#filament)" filter="url(#feather)" opacity=".28" stroke-width="13">
+  <path d="M813 250 C910 102 971 235 914 348 C943 258 874 195 813 250"/>
+  <path d="M172 335 C68 258 24 387 104 461 C43 389 99 301 172 335"/>
+  <path d="M552 853 C607 750 748 789 767 858 C715 788 625 793 552 853"/>
+ </g>
+ <g stroke="url(#filament)" opacity=".45" stroke-width="3.5" filter="url(#soft)">
+  <path d="M808 259 C895 129 958 235 907 338">
+   <animate attributeName="opacity" values=".34;.72;.49;.34" dur="14.2s" repeatCount="indefinite"/>
+   <animate attributeName="stroke-dasharray" values="8 20;20 12;8 20" dur="14.2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M164 330 C77 268 31 390 114 458">
+   <animate attributeName="opacity" values=".22;.44;.32;.22" dur="18.1s" repeatCount="indefinite"/>
+   <animate attributeName="stroke-dasharray" values="10 24;19 15;10 24" dur="18.1s" repeatCount="indefinite"/>
+  </path>
+  <path d="M556 849 C625 773 729 794 764 858">
+   <animate attributeName="opacity" values=".28;.53;.35;.28" dur="11.7s" repeatCount="indefinite"/>
+   <animate attributeName="stroke-dasharray" values="9 23;22 12;9 23" dur="11.7s" repeatCount="indefinite"/>
+  </path>
+ </g>
+</g>
+<style>
+@media (prefers-reduced-motion:reduce){animate{display:none}}
+</style>
+</svg>
