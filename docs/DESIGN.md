@@ -14,7 +14,7 @@ The visual system must be specific to Sintara, not a generic technology template
 ### Source and scope
 - Studio's main photographic surface uses observational imagery credited to NASA/GSFC/SDO.
 - Reference: https://science.nasa.gov/photojournal/image-of-sun-from-nasas-solar-dynamics-observatory/
-- The base photograph is currently loaded from NASA's CDN, with a local SVG used only as a fallback. The external dependency should be optimized or localized in a later pass.
+- The original photograph is stored locally as `assets/solar-sdo.jpg`; `solar-surface.jpg` lifts midtones and warm-white highlights while preserving observational detail. `tools/build-solar.ps1` reproducibly derives this surface and three alpha masks from source luminance multiplied by soft regions around existing active structures. No generated plasma or drawn arcs.
 - The user-provided reference sets the color mood, **not** a mandate to copy its image.
 
 ### Appearance
@@ -25,7 +25,7 @@ The visual system must be specific to Sintara, not a generic technology template
 
 ### Movement
 - The solar disc stays **completely still**: no rotation and no zoom animation.
-- Only broad, low-amplitude corona illumination and localized light fluctuations may animate.
+- Three fixed luminosity masks animate opacity only, with a shared 12-second period and staggered peaks at 6, 2.4 and 9.6 seconds. Identical 0%/100% values and zero endpoint easing velocity close the loop continuously. The portal also stays fixed on hover.
 - Do not draw artificial line arcs or concentric electromagnetic waves.
 - The previously added `assets/solar-activity.svg` was **removed**, with its references from Studio and the home portal.
 - Animation must be gentle and respect `prefers-reduced-motion`.
