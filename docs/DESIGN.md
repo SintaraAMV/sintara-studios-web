@@ -69,3 +69,16 @@ scientifically accurate plasma or electromagnetic field simulation.
 - All optional motion must respect `prefers-reduced-motion`.
 - Prominence paths and colors are illustrative and should not be
   described as a physically accurate simulation of solar plasma.
+
+
+## Solar refinement v1.4: restrained color and density
+
+- The prior v1.3 orange boost was reduced; the main disc stays warm amber/gold
+  with orange only where it supports existing surface detail.
+- Highlights remain yellow to warm-white rather than uniformly orange.
+- Two small, low-intensity prominences were added to the existing six, at
+  dissimilar positions near the north-west and lower limb.
+- Additional prominence motion remains asynchronous; no object rotation,
+  concentric electromagnetic-wave rings, or synchronized flame bursts.
+- The existing observation imagery and its attribution are retained.
+- This is an artistic atmospheric overlay, not a physically accurate solar model.

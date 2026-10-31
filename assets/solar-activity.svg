@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
   <title>Localized solar prominences</title>
-  <desc>Six irregular luminous plasma arcs with independent, gentle movement along their own paths. The solar disc itself remains static.</desc>
+  <desc>Eight asymmetrical plasma arcs, including two subtle edge prominences, with independent and gentle light flow. The solar disc remains static.</desc>
   <defs>
     <linearGradient id="arc-heat" x1="0%" y1="100%" x2="90%" y2="0%">
       <stop offset="0" stop-color="#b53b06" stop-opacity=".15"/>
@@ -32,16 +32,22 @@
     .prominence-4 {animation:glow-b 19.4s -12.1s ease-in-out infinite;}
     .prominence-5 {animation:glow-a 14.8s -3.7s ease-in-out infinite;}
     .prominence-6 {animation:glow-c 23.8s -15.1s ease-in-out infinite;}
+    .prominence-7 {animation:glow-minor-a 27.4s -8.5s ease-in-out infinite;}
+    .prominence-8 {animation:glow-minor-b 20.9s -13.2s ease-in-out infinite;}
     .filament-1 {animation:flow 17.6s -4.2s linear infinite;}
     .filament-2 {animation:flow 21.1s -10.4s linear infinite;}
     .filament-3 {animation:flow 25.3s -7.1s linear infinite;}
     .filament-4 {animation:flow 19.4s -12.1s linear infinite;}
     .filament-5 {animation:flow 14.8s -3.7s linear infinite;}
     .filament-6 {animation:flow 23.8s -15.1s linear infinite;}
+    .filament-7 {animation:flow 27.4s -8.5s linear infinite;}
+    .filament-8 {animation:flow 20.9s -13.2s linear infinite;}
     @keyframes flow { to {stroke-dashoffset:-210;} }
     @keyframes glow-a {0%,100%{opacity:.44;}39%{opacity:.83;}71%{opacity:.57;}}
     @keyframes glow-b {0%,100%{opacity:.68;}31%{opacity:.49;}76%{opacity:.86;}}
     @keyframes glow-c {0%,100%{opacity:.56;}44%{opacity:.79;}67%{opacity:.38;}}
+    @keyframes glow-minor-a {0%,100%{opacity:.23;}32%{opacity:.49;}70%{opacity:.31;}}
+    @keyframes glow-minor-b {0%,100%{opacity:.36;}39%{opacity:.21;}77%{opacity:.52;}}
     @media(prefers-reduced-motion:reduce) {
       .prominence,.arc-filament {animation:none!important;}
     }
@@ -87,5 +93,19 @@
     <path class="arc-glow" d="M915 438 C1010 415 1046 494 1014 546 C994 574 938 584 897 579" stroke-width="12.81"/>
     <path class="arc-body" d="M915 438 C1010 415 1046 494 1014 546 C994 574 938 584 897 579" stroke-width="2.1"/>
     <path class="arc-filament filament-6" d="M923 442 C997 430 1027 492 996 539 C974 566 931 569 898 569" stroke-width="1.24"/>
+  </g>
+
+  <!-- Small, non-symmetric edge activity: north-west shoulder -->
+  <g class="prominence prominence-7">
+    <path class="arc-glow" d="M168 244 C124 188 73 200 81 261 C86 293 114 310 132 309" stroke-width="10.7"/>
+    <path class="arc-body" d="M168 244 C124 188 73 200 81 261 C86 293 114 310 132 309" stroke-width="1.8"/>
+    <path class="arc-filament filament-7" d="M166 254 C125 207 88 213 94 263 C100 289 117 296 136 301" stroke-width=".92"/>
+  </g>
+
+  <!-- Small, displaced south-limb loop: bright irregular footpoint, faint return -->
+  <g class="prominence prominence-8">
+    <path class="arc-glow" d="M516 900 C528 944 556 976 584 965 C612 954 606 921 632 904" stroke-width="11.2"/>
+    <path class="arc-body" d="M516 900 C528 944 556 976 584 965 C612 954 606 921 632 904" stroke-width="1.85"/>
+    <path class="arc-filament filament-8" d="M527 906 C539 940 560 966 581 954 C604 941 605 920 629 910" stroke-width="1.04"/>
   </g>
 </svg>

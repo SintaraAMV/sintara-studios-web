@@ -485,9 +485,9 @@ a{color:inherit}
 }
 
 @keyframes solar-plasma-fluctuation{
-  0%,100%{opacity:.38;filter:brightness(.93)}
-  37%{opacity:.59;filter:brightness(1.07)}
-  72%{opacity:.48;filter:brightness(.98)}
+  0%,100%{opacity:.36;filter:brightness(.95)}
+  37%{opacity:.52;filter:brightness(1.06)}
+  72%{opacity:.43;filter:brightness(.99)}
 }
 
 @keyframes solar-local-emission{
@@ -536,38 +536,38 @@ a{color:inherit}
 }
 
 
-/* Solar palette and prominence refinement v1.3.
-   Reference: vivid orange surface, amber contours and localized warm-white activity.
+/* Solar palette and prominence refinement v1.4.
+   Reference: balanced gold-amber warmth, restrained orange and locally warm-white plasma.
    No disc rotation. No decorative concentric EM rings. */
 .solar-disc{
-  filter:sepia(.16) hue-rotate(-20deg) saturate(2.05) contrast(1.17) brightness(1.26);
+  filter:sepia(.09) hue-rotate(-10deg) saturate(1.48) contrast(1.15) brightness(1.18);
 }
 .solar-plasma{
-  opacity:.86;
+  opacity:.72;
   animation:solar-plasma-fluctuation 19s ease-in-out infinite;
-  filter:saturate(1.22);
+  filter:saturate(1.08);
 }
 .solar-corona{
   background:
     radial-gradient(circle at 50% 50%,
       transparent 34%,
-      rgba(242,72,3,.08) 43%,
-      rgba(255,120,8,.2) 48%,
-      rgba(255,175,36,.08) 54%,
+      rgba(226,96,17,.07) 43%,
+      rgba(255,155,42,.16) 48%,
+      rgba(255,196,78,.07) 54%,
       transparent 63%);
 }
 .solar-halo{
   background:
-    radial-gradient(ellipse 12% 9% at 89% 34%,rgba(255,240,166,.39),transparent 90%),
-    radial-gradient(ellipse 13% 11% at 12% 37%,rgba(255,169,31,.31),transparent 90%),
-    radial-gradient(ellipse 11% 10% at 74% 81%,rgba(252,105,6,.28),transparent 90%);
+    radial-gradient(ellipse 12% 9% at 89% 34%,rgba(255,242,185,.34),transparent 90%),
+    radial-gradient(ellipse 13% 11% at 12% 37%,rgba(255,195,71,.27),transparent 90%),
+    radial-gradient(ellipse 11% 10% at 74% 81%,rgba(255,159,42,.2),transparent 90%);
 }
 .portal-sun .portal-image{
-  filter:sepia(.16) hue-rotate(-20deg) saturate(2.05) contrast(1.17) brightness(1.2);
+  filter:sepia(.09) hue-rotate(-10deg) saturate(1.48) contrast(1.15) brightness(1.16);
 }
 .portal-sun:hover .portal-image{
   transform:scale(1.025);
-  filter:sepia(.16) hue-rotate(-20deg) saturate(2.08) contrast(1.19) brightness(1.23);
+  filter:sepia(.09) hue-rotate(-10deg) saturate(1.52) contrast(1.16) brightness(1.18);
 }
 /* Match the NASA image's square composition: the same overlay appears on the
    Studio stage and the homepage without changing their layout. */
@@ -580,14 +580,14 @@ a{color:inherit}
   background-repeat:no-repeat;
   background-position:60% center;
   background-size:cover;
-  opacity:.68;
+  opacity:.57;
   mix-blend-mode:screen;
   animation:solar-portal-activity 18s ease-in-out infinite;
 }
 @keyframes solar-portal-activity{
-  0%,100%{opacity:.52}
-  42%{opacity:.73}
-  76%{opacity:.6}
+  0%,100%{opacity:.43}
+  42%{opacity:.62}
+  76%{opacity:.52}
 }
 @media(prefers-reduced-motion:reduce){
   .portal-sun .portal-solar-plasma{animation:none!important}
