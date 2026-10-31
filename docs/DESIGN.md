@@ -1,97 +1,43 @@
 # DESIGN DIRECTION
 
-## Principle
+## Principles
 
-The visual system should feel deliberate, cinematic and editorial rather than template-driven.
+The visual system must be specific to Sintara, not a generic technology template.
 
-## Home
+- Studio uses the Sun as its visual identity.
+- Projects uses the Black Hole as its visual identity.
+- Once inside either area, legibility and useful content take precedence over spectacle.
+- Typography and composition lead; decoration is secondary.
 
-Two large visual territories:
-- Sun = Studio
-- Black Hole = Projects / Services
+## Current solar direction — v1.6
 
-The split must communicate meaning through hierarchy and typography, not only through imagery.
+### Source and scope
+- Studio's main photographic surface uses observational imagery credited to NASA/GSFC/SDO.
+- Reference: https://science.nasa.gov/photojournal/image-of-sun-from-nasas-solar-dynamics-observatory/
+- The base photograph is currently loaded from NASA's CDN, with a local SVG used only as a fallback. The external dependency should be optimized or localized in a later pass.
+- The user-provided reference sets the color mood, **not** a mandate to copy its image.
 
-## Interior pages
+### Appearance
+- Brighter golden-yellow sunlight and warm amber, with **moderate orange**.
+- Preserve real irregular structures and tonal separation; no flat uniform orange fill.
+- A few localized warm-white highlights, especially where observational features already show activity.
+- Deep, uncluttered dark surroundings and readable text.
 
-Once the visitor enters a section, clarity becomes more important than spectacle.
+### Movement
+- The solar disc stays **completely still**: no rotation and no zoom animation.
+- Only broad, low-amplitude corona illumination and localized light fluctuations may animate.
+- Do not draw artificial line arcs or concentric electromagnetic waves.
+- The previously added `assets/solar-activity.svg` was **removed**, with its references from Studio and the home portal.
+- Animation must be gentle and respect `prefers-reduced-motion`.
+- This is atmospheric brand motion, **not** a physical simulation of plasma.
 
-Rango B should prioritize:
-1. problem recognition
-2. service fit
-3. starting price
-4. evidence / process
-5. contact
+### Anti-AI-slop test
+- The still frame must look credible before animation is enabled.
+- No symmetrical plasma patterns, duplicated fire shapes, glowing rings, intense blinking or attention-grabbing loops.
+- Color grading must not erase the source's surface detail or overexpose the entire disc.
 
-## Typography
+## Other constraints
 
-Use strong contrast between restrained sans-serif UI text and serif display headlines.
-
-## Motion
-
-Motion is optional and minimal. Avoid decorative particle fields, perpetual floating, glowing cards, animated gradients or scrolling gimmicks without function.
-
-## Solar realism standard (v1.2)
-
-The Studio Sun uses a real NASA/GSFC/SDO observation as its
-photographic source, with custom animated atmospheric overlays.
-It does NOT rotate. No artificial expanding electromagnetic-wave rings.
-
-- Static observational surface, true solar texture
-- Slow asynchronous corona luminosity
-- Three faint, localized prominence/field-aligned plasma treatments
-- No looping flame sprite sheets or perfectly periodic bursts
-- Respect `prefers-reduced-motion`
-- Small attribution visible in the Studio hero
-
-Source and credit:
-https://science.nasa.gov/photojournal/image-of-sun-from-nasas-solar-dynamics-observatory/
-
-Note: At this stage the photographic base is served by NASA's image CDN.
-It is a network dependency and should later be optimized as a local,
-properly credited asset if stability and performance tests justify it.
-
-The visual overlays are artistic interpretations, NOT a numerical or
-scientifically accurate plasma or electromagnetic field simulation.
-
-
-## Solar refinement v1.3
-
-- Surface palette: vivid orange / amber, with irregular high-temperature
-  cream-white highlights; avoid flat saturated orange.
-- Existing NASA/SDO observational source remains the static texture.
-- Solar disc does not rotate.
-- Six asymmetrical coronal prominences are provided by a separate
-  `assets/solar-activity.svg` overlay. Each follows a unique arc and
-  has its own flow/glow cadence, avoiding synchronized repetition.
-- The same prominence overlay is displayed on the Studio hero and
-  the Sun portal panel. Render independently of the disc.
-- All optional motion must respect `prefers-reduced-motion`.
-- Prominence paths and colors are illustrative and should not be
-  described as a physically accurate simulation of solar plasma.
-
-
-## Solar refinement v1.4: restrained color and density
-
-- The prior v1.3 orange boost was reduced; the main disc stays warm amber/gold
-  with orange only where it supports existing surface detail.
-- Highlights remain yellow to warm-white rather than uniformly orange.
-- Two small, low-intensity prominences were added to the existing six, at
-  dissimilar positions near the north-west and lower limb.
-- Additional prominence motion remains asynchronous; no object rotation,
-  concentric electromagnetic-wave rings, or synchronized flame bursts.
-- The existing observation imagery and its attribution are retained.
-- This is an artistic atmospheric overlay, not a physically accurate solar model.
-
-
-## Solar v1.5 — balanced warmth and restrained activity
-
-- Primary hues: natural gold and amber; orange is a minor accent, not the dominant surface color.
-- Preserve observational surface contrast; avoid uniformly saturating the disc.
-- Warm-white highlights belong primarily to existing active regions.
-- The solar disc remains static. No rotation.
-- Corona, local emission and SVG prominence loops animate gently at different cadences.
-- Emission opacity changes have small amplitudes; no aggressive strobes, expanding rings, or synchronized flashes.
-- The same restrained treatment is applied to the Studio hero and home Studio portal.
-- Animation is a visual interpretation of plasma/coronal activity, not a scientific time-lapse.
-- Assess the real rendered result on desktop and mobile before treating the design as final.
+- Maintain accessible semantic navigation and responsive layouts.
+- Rango B pages should prioritize service fit, scope, evidence, pricing and contact.
+- No false testimonials or claims of commercial validation.

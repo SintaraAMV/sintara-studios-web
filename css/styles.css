@@ -368,10 +368,9 @@ a{color:inherit}
 }
 
 
-/* Solar system v1.2
-   The disc is NASA/GSFC/SDO observational imagery, not a CSS-drawn sun.
-   Only plasma/corona/halo layers animate. No rotation, no concentric EM waves.
-   The SVG fallback stays available if the remote base fails. */
+/* Solar system: NASA/GSFC/SDO observational image.
+   Fixed disc, gentle corona and localized emission only.
+   The sun.svg image remains as a fallback if the remote base fails. */
 
 .hero-sun{
   background:#020202;
@@ -399,7 +398,6 @@ a{color:inherit}
 
 .solar-corona,
 .solar-disc,
-.solar-plasma,
 .solar-halo{
   position:absolute;
   inset:0;
@@ -416,7 +414,7 @@ a{color:inherit}
       rgba(243,101,2,.07) 53%,
       transparent 62%);
   filter:blur(28px);
-  animation:solar-corona-breath 23s ease-in-out infinite;
+  animation:solar-corona-breath 26s ease-in-out infinite;
 }
 
 .solar-disc{
@@ -433,15 +431,7 @@ a{color:inherit}
   /* Intentionally static: the Sun itself never spins or shifts. */
 }
 
-.solar-plasma{
-  background-image:url("../assets/solar-activity.svg");
-  background-position:center;
-  background-size:contain;
-  background-repeat:no-repeat;
-  opacity:.53;
-  mix-blend-mode:screen;
-  animation:solar-plasma-fluctuation 19s ease-in-out infinite;
-}
+
 
 .solar-halo{
   inset:2%;
@@ -451,7 +441,7 @@ a{color:inherit}
     radial-gradient(ellipse 12% 8% at 61% 84%,rgba(240,92,7,.26),transparent 90%);
   filter:blur(22px);
   mix-blend-mode:screen;
-  animation:solar-local-emission 13.4s ease-in-out infinite;
+  animation:solar-local-emission 19s ease-in-out infinite;
 }
 
 .hero-sun .hero-overlay{
@@ -484,11 +474,7 @@ a{color:inherit}
   71%{opacity:.61}
 }
 
-@keyframes solar-plasma-fluctuation{
-  0%,100%{opacity:.33}
-  37%{opacity:.45}
-  72%{opacity:.39}
-}
+
 
 @keyframes solar-local-emission{
   0%,100%{opacity:.48}
@@ -524,7 +510,7 @@ a{color:inherit}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .solar-corona,.solar-plasma,.solar-halo{animation:none!important}
+  .solar-corona,.solar-halo{animation:none!important}
 }
 
 
@@ -536,17 +522,13 @@ a{color:inherit}
 }
 
 
-/* Solar palette and prominence refinement v1.5.
-   Reference: balanced gold-amber warmth, restrained orange and locally warm-white plasma.
-   No disc rotation. No decorative concentric EM rings. */
+/* Solar refinement v1.6: observational surface, moderate orange warmth,
+   localized light only. Retired artificial SVG prominence paths.
+   No rotation and no expanding electromagnetic-wave rings. */
 .solar-disc{
-  filter:sepia(.05) hue-rotate(-5deg) saturate(1.30) contrast(1.13) brightness(1.12);
+  filter:sepia(.035) hue-rotate(-9deg) saturate(1.46) contrast(1.17) brightness(1.25);
 }
-.solar-plasma{
-  opacity:.43;
-  animation:solar-plasma-fluctuation 19s ease-in-out infinite;
-  filter:saturate(1.02);
-}
+
 .solar-corona{
   background:
     radial-gradient(circle at 50% 50%,
@@ -563,32 +545,31 @@ a{color:inherit}
     radial-gradient(ellipse 11% 10% at 74% 81%,rgba(255,179,75,.15),transparent 90%);
 }
 .portal-sun .portal-image{
-  filter:sepia(.05) hue-rotate(-5deg) saturate(1.30) contrast(1.13) brightness(1.10);
+  filter:sepia(.035) hue-rotate(-9deg) saturate(1.46) contrast(1.17) brightness(1.23);
 }
 .portal-sun:hover .portal-image{
   transform:scale(1.025);
-  filter:sepia(.05) hue-rotate(-5deg) saturate(1.34) contrast(1.14) brightness(1.12);
+  filter:sepia(.035) hue-rotate(-9deg) saturate(1.49) contrast(1.18) brightness(1.25);
 }
-/* Match the NASA image's square composition: the same overlay appears on the
-   Studio stage and the homepage without changing their layout. */
-.portal-sun .portal-solar-plasma{
+/* On the home portal, animate only broad, low-opacity corona illumination:
+   no added geometric rays or rotating solar disc. */
+.portal-sun .portal-shade::before{
+  content:"";
   position:absolute;
   inset:0;
-  z-index:-2;
   pointer-events:none;
-  background-image:url("../assets/solar-activity.svg");
-  background-repeat:no-repeat;
-  background-position:60% center;
-  background-size:cover;
-  opacity:.35;
-  mix-blend-mode:screen;
-  animation:solar-portal-activity 18s ease-in-out infinite;
+  background:radial-gradient(ellipse at 61% 43%,rgba(255,206,106,.13),transparent 58%);
+  opacity:.45;
+  animation:solar-portal-light 24s ease-in-out infinite;
 }
-@keyframes solar-portal-activity{
-  0%,100%{opacity:.28}
-  42%{opacity:.40}
-  76%{opacity:.33}
+@keyframes solar-portal-light{
+  0%,100%{opacity:.40}
+  48%{opacity:.55}
+  77%{opacity:.45}
 }
 @media(prefers-reduced-motion:reduce){
-  .portal-sun .portal-solar-plasma{animation:none!important}
+  .portal-sun .portal-shade::before{animation:none!important}
 }
+
+
+
