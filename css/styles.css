@@ -386,6 +386,24 @@ a{color:inherit}
   filter:contrast(1.30) saturate(1.40) hue-rotate(-14deg);
   transition:none;
   isolation:isolate;
+  /* Only feather the outermost solar corona. The disc, its color,
+     the image scale, and all three synchronized activity masks stay untouched.
+     The radius is tied to the existing 1:1 background-image diameter. */
+  --solar-edge-diameter:min(50vw,max(37.5vw,75svh));
+  -webkit-mask-image:radial-gradient(circle at center,
+    #000 0,
+    #000 calc(var(--solar-edge-diameter) * .405),
+    rgba(0,0,0,.94) calc(var(--solar-edge-diameter) * .42),
+    rgba(0,0,0,.60) calc(var(--solar-edge-diameter) * .445),
+    rgba(0,0,0,.20) calc(var(--solar-edge-diameter) * .47),
+    transparent calc(var(--solar-edge-diameter) * .50));
+  mask-image:radial-gradient(circle at center,
+    #000 0,
+    #000 calc(var(--solar-edge-diameter) * .405),
+    rgba(0,0,0,.94) calc(var(--solar-edge-diameter) * .42),
+    rgba(0,0,0,.60) calc(var(--solar-edge-diameter) * .445),
+    rgba(0,0,0,.20) calc(var(--solar-edge-diameter) * .47),
+    transparent calc(var(--solar-edge-diameter) * .50));
 }
 .solar-emission{
   position:absolute;
@@ -510,6 +528,7 @@ a{color:inherit}
 .portal-sun .portal-image,
 .portal-sun:hover .portal-image{
   background-size:max(75vw,37.5svh) auto;
+  --solar-edge-diameter:max(75vw,37.5svh);
 }
 .portal-sun .solar-emission{
   -webkit-mask-size:max(75vw,37.5svh) auto;
