@@ -35,9 +35,13 @@ jobs:
           echo "HOLE_BROWSER=$(node -p \"require('playwright').chromium.executablePath()\")" >> "$GITHUB_ENV"
 
       - name: Verify 12-second solar loop and responsive layout
+        env:
+          SOLAR_QA_OUTPUT: ${{ github.workspace }}/solar-qa
         run: node tools/verify-solar.cjs
 
       - name: Verify 10-second black-hole loop and responsive layout
+        env:
+          HOLE_QA_OUTPUT: ${{ github.workspace }}/black-hole-qa
         run: node tools/verify-black-hole.cjs
 
       - name: Preserve desktop and mobile QA screenshots
