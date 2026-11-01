@@ -1,0 +1,52 @@
+name: Portal visual QA
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'css/styles.css'
+      - 'assets/**'
+      - 'tools/verify-solar.cjs'
+      - 'tools/verify-black-hole.cjs'
+      - '.github/workflows/portal-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual-loops:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install test-only browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.1
+          npx playwright install --with-deps chromium
+          echo "SOLAR_BROWSER=$(node -p \"require('playwright').chromium.executablePath()\")" >> "$GITHUB_ENV"
+          echo "HOLE_BROWSER=$(node -p \"require('playwright').chromium.executablePath()\")" >> "$GITHUB_ENV"
+
+      - name: Verify 12-second solar loop and responsive layout
+        run: node tools/verify-solar.cjs
+
+      - name: Verify 10-second black-hole loop and responsive layout
+        run: node tools/verify-black-hole.cjs
+
+      - name: Preserve desktop and mobile QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portal-visual-qa
+          path: |
+            solar-qa/
+            black-hole-qa/
+          if-no-files-found: warn
+          retention-days: 14
