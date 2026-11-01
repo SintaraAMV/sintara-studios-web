@@ -491,6 +491,15 @@ a{color:inherit}
 .portal-hole .hole-flow>span{
   background-size:cover;background-position:56% center;
 }
+/* Centre the visible shadow, not only the 16:9 image canvas.
+   Transform the still and disk mask together so their geometry stays aligned. */
+.portal-hole .hole-original,
+.portal-hole .hole-flow{
+  transform:translate(-9%,10%) scale(1.23);
+  transform-origin:center;
+}
+/* Preserve white navigation text over the vivid solar image. */
+.topbar{mix-blend-mode:normal;text-shadow:0 1px 8px rgba(0,0,0,.94),0 0 12px rgba(0,0,0,.65)}
 @media(max-width:820px){
 .hero-hole{display:flex;flex-direction:column;align-items:stretch}
 .hero-hole .hole-stage{order:0}
