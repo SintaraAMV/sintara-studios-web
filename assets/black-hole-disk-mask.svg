@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs><filter id="soft" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur stdDeviation="9"/></filter></defs>
+  <!-- Fixed narrow regions follow the original disk; neither stars nor shadow are exposed. -->
+  <g fill="none" stroke="white" filter="url(#soft)">
+    <path stroke-width="30" d="M110 884 C520 747 946 602 1350 449 S1735 305 1910 266"/>
+    <path stroke-width="24" d="M755 548 C793 314 928 144 1130 164 C1310 168 1378 279 1452 343"/>
+    <path stroke-width="20" d="M971 740 C1098 862 1313 830 1398 657"/>
+  </g>
+</svg>
