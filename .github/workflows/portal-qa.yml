@@ -31,8 +31,9 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright@1.55.1
           npx playwright install --with-deps chromium
-          echo "SOLAR_BROWSER=$(node -p \"require('playwright').chromium.executablePath()\")" >> "$GITHUB_ENV"
-          echo "HOLE_BROWSER=$(node -p \"require('playwright').chromium.executablePath()\")" >> "$GITHUB_ENV"
+          BROWSER_PATH=$(node -p 'require("playwright").chromium.executablePath()')
+          echo "SOLAR_BROWSER=$BROWSER_PATH" >> "$GITHUB_ENV"
+          echo "HOLE_BROWSER=$BROWSER_PATH" >> "$GITHUB_ENV"
 
       - name: Verify 12-second solar loop and responsive layout
         env:
