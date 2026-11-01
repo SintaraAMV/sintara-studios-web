@@ -379,7 +379,7 @@ a{color:inherit}
 .portal-sun:hover .portal-image{
   background-image:url("../assets/solar-surface.jpg");
   /* Original cover diameter × 0.75, with the solar rim centered. */
-  background-size:max(37.5vw,75svh) auto;
+  background-size:min(100%,max(37.5vw,75svh)) auto;
   background-position:center;
   background-repeat:no-repeat;
   transform:none;
@@ -418,8 +418,8 @@ a{color:inherit}
 }
 .portal-sun .solar-emission{
   /* Keep active regions and alpha masks aligned with the photograph. */
-  -webkit-mask-size:max(37.5vw,75svh) auto;
-  mask-size:max(37.5vw,75svh) auto;
+  -webkit-mask-size:min(100%,max(37.5vw,75svh)) auto;
+  mask-size:min(100%,max(37.5vw,75svh)) auto;
   -webkit-mask-position:center;
   mask-position:center;
 }
