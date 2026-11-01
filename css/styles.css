@@ -476,27 +476,29 @@ a{color:inherit}
 .hero-hole h1{font-size:clamp(2.8rem,4.2vw,5rem)}
 .hero-hole .lede,.hero-hole .hero-scroll-cue{color:#fff}
 .portal-hole{background:#050303}
+.portal-sun{background:#000}
 .portal-hole .hole-stage{
   position:absolute;inset:0;z-index:0;
   width:100%;height:100%;aspect-ratio:auto;
 }
 .portal-hole .hole-original{
   width:100%;height:100%;
-  object-fit:cover;object-position:56% center;
+  object-fit:cover;object-position:66% center;
 }
 .portal-hole .hole-flow{
   -webkit-mask-size:cover;mask-size:cover;
-  -webkit-mask-position:56% center;mask-position:56% center;
+  -webkit-mask-position:66% center;mask-position:66% center;
 }
 .portal-hole .hole-flow>span{
-  background-size:cover;background-position:56% center;
+  background-size:cover;background-position:66% center;
 }
-/* Centre the visible shadow, not only the 16:9 image canvas.
-   Transform the still and disk mask together so their geometry stays aligned. */
+/* The original 16:9 image covers each portal without an extra zoom:
+   the horizontal focal point keeps the full black-hole shadow in view. */
 .portal-hole .hole-original,
-.portal-hole .hole-flow{
-  transform:translate(-6%,5%) scale(1.12);
-  transform-origin:center;
+.portal-hole .hole-flow{transform:none}
+@media(min-width:821px){
+  .portal-sun .portal-copy,
+  .portal-hole .portal-copy{bottom:clamp(52px,6.5vh,78px)}
 }
 /* Preserve white navigation text over the vivid solar image. */
 .topbar{mix-blend-mode:normal;text-shadow:0 1px 8px rgba(0,0,0,.94),0 0 12px rgba(0,0,0,.65)}
